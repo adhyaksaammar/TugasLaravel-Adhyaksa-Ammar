@@ -5,6 +5,9 @@ use App\BiodataMahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateBiodata;
+use App\Exports\MahasiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 class BiodataController extends Controller
 {
     //
@@ -18,7 +21,14 @@ class BiodataController extends Controller
     	$mahasiswa = BiodataMahasiswa::all();
         // dd(BiodataMahasiswa::)
     	return view("biodata.index", compact("mahasiswa"));
+        
     }
+
+    public function export_excel()
+    {
+        return Excel::download(new MahasiswaExport, 'biodata.xlsx');
+    }
+
     public function create(){
         return view("biodata.create");
     }

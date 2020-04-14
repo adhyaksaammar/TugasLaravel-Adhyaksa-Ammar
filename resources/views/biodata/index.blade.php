@@ -30,6 +30,8 @@
         <table id="datatable" class="table table-bordered table-hover table-striped tblind">
             <h1>Daftar Mahasiswa</h1>
         	<a href="{{ route('biodata.create') }}" class="btn btn-info">Tambahkan</a><br><br>
+            <a href="/biodata-mahasiswa/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+
             <thead><tr>
  	<th>Id</th>
 		<th>Name</th>
