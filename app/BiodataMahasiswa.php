@@ -14,6 +14,7 @@ protected $fillable = [
 		"name",
 		"nim",
 		"address",
+		"filePath",
 		"photo"
 ];
 

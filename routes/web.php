@@ -44,3 +44,4 @@ Route::post("/biodata-mahasiswa/{id}/update", "BiodataController@update")
 Route::get("/biodata-mahasiswa/{id}/delete", "BiodataController@destroy")
 ->name("biodata.destroy");
 
+

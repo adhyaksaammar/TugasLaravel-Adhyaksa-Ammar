@@ -20,42 +20,23 @@
 </script>
 
 @stop
-@extends('layout')
+@extends("layout")
 
-@section('content')
+@push("style")
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+@endpush
 
-    <div class="card mt-5">
-    <div class="card-body">
+@section("content")
 
-        <table id="datatable" class="table table-bordered table-hover table-striped tblind">
-            <h1>Daftar Mahasiswa</h1>
-        	<a href="{{ route('biodata.create') }}" class="btn btn-info">Tambahkan</a><br><br>
-            <a href="/biodata-mahasiswa/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+        <h1>Daftar Mahasiswa</h1>
+        <a href="{{ route('biodata.create') }}" class="btn btn-info">Tambahkan</a><br><br>
+        <a href="/biodata-mahasiswa/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+        {!!$html->table()!!}
 
-            <thead><tr>
- 	<th>Id</th>
-		<th>Name</th>
-		<th>NIM</th>
-		<th>Address</th>
-        <th style="width: 200px">Aksi</th>
-    </tr>
-            </thead>
-            <tbody>
-                @foreach($mahasiswa as $data)
-                <tr>
-  	<td>{{  $data->id }}</td>
-				<td>{{  $data->name }}</td>
-				<td>{{  $data->nim }}</td>
-				<td>{{  $data->address }}</td>
-                    <td>
-                       <a href="{{ route('biodata.show', ['id' => $data-> id]) }}" class="btn btn-success">Detail</a>
-					<a href="{{ route('biodata.edit', ['id' => $data-> id]) }}"  class="btn btn-warning">Edit</a>
-					<a onclick="return confirm('Apakah Anda Yakin ?');" href="{{ route('biodata.destroy', ['id' => $data-> id]) }}"  class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-</div>
-@endsection('content')
+   
+@endsection("content")
+
+@push("script")
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    {!! $html->scripts() !!}
+@endpush
